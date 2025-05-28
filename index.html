@@ -79,8 +79,7 @@
       border: solid 1.5px #5a5555;
       box-shadow: 2px 2px 10px #c0afaf;
       border-radius: 8px;
-      height: 35px;
-      padding: 0 10px;
+      padding: 4px 2px;
       width: var(--input-width);
       text-align: right;
       font-size: clamp(0.9rem, 3vw, 1rem);
@@ -123,7 +122,7 @@
       background: rgba(255, 255, 255, 0.8);
       border: solid 1.5px #5a5555;
       border-radius: 8px;
-      height: 35px;
+      padding: 4px 2px;
       text-align: center;
       width: var(--subject-input-width);
       font-size: clamp(0.9rem, 3vw, 1rem);
@@ -172,14 +171,24 @@
       }
       
       .subject-group input {
+        font-size: 10px;
         width: 100%;
         margin-top: 5px;
       }
       .input-group label{
-        width: 90px;
+        font-size: 10px;
+        width: 80px;
       }
       .input-group input{
-        width: 170px;
+        font-size: 10px;
+
+        width: 160px;
+      }
+      .result-card h2{
+        font-size: 16px;
+      }
+      .result-card p{
+        font-size: 12px;
       }
     }
 </style>
@@ -242,11 +251,12 @@
   </div>
   
   <div class="result-card">
-    <h2>- كارت البيانات -</h2>
+    <h2>📙 كارت البيانات 📘</h2>
     <p id="totalname" >الاسم الكامل: </p>
     <p id="totalnum"  >رقم الهاتـف: </p>
     <p id="totalage"  >العمــــــــــر: </p>
     <p id="totalmarks">المعـــــــدل : </p>
+    <p> المبرمج🧑‍💻: عبدالخالق النعيمي  </p>
   </div>
 
 
