@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نموذج البيانات</title>
+<style>
+    /* أنماط عامة */
+    body {
+      font-family: Arial, sans-serif;
+      background: url(https://watermark.lovepik.com/photo/20211118/large/lovepik-street-in-the-middle-of-the-forest-picture_450085294.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 20px;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* هذا السطر يضمن توسيط عمودي */
+      align-items: center; /* هذا السطر يضمن توسيط أفقي */
+      margin: 0;
+    }
+
+    /* صندوق النموذج */
+    .form-box {
+      width: 50%;
+      background-color: #f1e7e7a3;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .form-box h2 {
+      color: #443850;
+      margin-bottom: 20px;
+    }
+
+    .form-box h3 {
+      color: #60516f;
+      margin-bottom: 25px;
+    }
+
+    /* حقول الإدخال */
+    .input-group {
+      direction: ltr;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .input-group label {
+      background-color: rgba(136, 170, 153, 0.816);
+      border-radius: 8px;
+      align-items: center;
+      padding: 8px 15px;
+      border: 1.5px solid #5a5555;
+      height: px;
+      text-align: center;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+    .input-group input {
+      background: rgb(255, 255, 255);
+      border: solid 1.5px #5a5555;
+      box-shadow: 2px 2px 10px #c0afaf;
+      border-radius: 8px;
+      height: 35px;
+      padding: 0 10px;
+      width: 200px;
+      text-align: right;
+      font-size: 16px;
+    }
+
+    /* حقول الإدخال */
+    .grades-container {
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 60px;
+      margin: 0 auto;
+      direction: rtl;
+    }
+
+    .subject-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 5px 8px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .subject-group label {
+      font-weight: bold;
+      margin-left: 15px;
+      white-space: nowrap;
+    }
+
+    .subject-group input {
+      background: rgba(255, 255, 255, 0.8);
+      border: solid 1.5px #5a5555;
+      border-radius: 8px;
+      height: 35px;
+      text-align: center;
+      width: 50px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .subject-group input:focus {
+      border: solid 2px #952525;
+      outline: none;
+    }
+
+    @media (max-width: 600px) {
+      .grades-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    .input-group input:focus{
+      border: solid 2px #952525;
+      outline: none;
+    }
+
+    /* بطاقة النتائج */
+    .result-card {
+      background-color: #8a9a; 
+      padding: 20px;
+      width: 40%;
+      border-radius: 10px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .result-card h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+      font-weight: bolder;
+    }
+
+    .result-card p {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0;
+      text-align: right;
+    }
+    label{
+      direction: rtl;
+    }
+</style>
+</head>
+<body>
+
+  <div class="form-box">
+    <h2>مرحباً بك</h2>
+    <h3>نموذج جمع البيانات</h3>
+    
+    <div class="input-group">
+      <input id="name1" placeholder="الاسم الأول" type="text">
+      <label for="name1">الاسم الأول</label>
+    </div>
+    
+    <div class="input-group">
+      <input id="name2" placeholder="الاسم الثاني" type="text">
+      <label for="name2">الاسم الثاني</label>
+    </div>
+    
+    <div class="input-group">
+      <input id="numphone" placeholder="رقم الهاتف" type="tel">
+      <label for="numphone">رقم الهاتف</label>
+    </div>
+    <div class="input-group">
+      <input id="age" placeholder="العمر " type="tel">
+      <label for="age">العمـــــــــر</label>
+    </div>
+<div class="grades-container">
+  <div class="subject-group">
+    <label for="moslim">التربية الاسلامية:</label>
+    <input id="moslim" placeholder="الدرجة" type="number">
+  </div>
+  
+  <div class="subject-group">
+    <label for="arabic">اللغة العربية:</label>
+    <input id="arabic" placeholder="الدرجة" type="number">
+  </div>
+
+  <div class="subject-group">
+    <label for="english">اللغة الانكليزية:</label>
+    <input id="english" placeholder="الدرجة" type="number">
+  </div>
+
+  <div class="subject-group">
+    <label for="math">الرياضيات:</label>
+    <input id="math" placeholder="الدرجة" type="number">
+  </div>
+
+  <div class="subject-group">
+    <label for="physics">الفيزياء:</label>
+    <input id="physics" placeholder="الدرجة" type="number">
+  </div>
+
+  <div class="subject-group">
+    <label for="chemistry">الكيمياء:</label>
+    <input id="chemistry" placeholder="الدرجة" type="number">
+  </div>
+</div>
+  </div>
+  
+  <div class="result-card">
+    <h2>- كارت البيانات -</h2>
+    <p id="totalname" >الاسم الكامل: </p>
+    <p id="totalnum"  >رقم الهاتـف: </p>
+    <p id="totalage"  >العمــــــــــر: </p>
+    <p id="totalmarks">المعـــــــدل : </p>
+  </div>
+
+
+<script>
+  //النصوص
+  function total(){
+  var name1 = document.getElementById("name1").value;
+  var name2 = document.getElementById("name2").value;
+  var totalname1 = name1 + " " + name2;
+  
+  document.getElementById('totalname').innerHTML = 'الاسم الكامل:  '+ totalname1;
+  document.getElementById('totalname').style.direction = 'rtl';
+}
+document.getElementById('name1').addEventListener('input',total)
+document.getElementById('name2').addEventListener('input',total)
+// رقم الهاتف
+function numphone(){
+  var numphone = document.getElementById('numphone').value;
+  document.getElementById('totalnum').innerHTML = 'رقم الهاتف:  '+numphone;
+}
+document.getElementById('numphone').addEventListener('input',numphone);
+
+
+
+
+
+//الدرجات
+function marks(){
+  var mada1 = Number(document.getElementById('moslim').value);
+  var mada2 = Number(document.getElementById('arabic').value);
+  var mada3 = Number(document.getElementById('math').value);
+  var mada4 = Number(document.getElementById('english').value);
+  var mada5 = Number(document.getElementById('physics').value);
+  var mada6 = Number(document.getElementById('chemistry').value);
+  var totalmarks = (mada1 + mada2 + mada3 + mada4 + mada5 + mada6)/6  ;
+  var textmarks = "ناجح"
+  if (totalmarks > 49.9){
+    textmarks = 'ناجح 😍'
+  }
+  else {
+        textmarks = 'راسب 😒'
+  }
+  document.getElementById('totalmarks').innerHTML = 'المعدل:    ' +totalmarks +" - "+" "+      textmarks;
+}
+//عرض تلقائي
+document.getElementById('moslim').addEventListener('input', marks)
+document.getElementById('arabic').addEventListener('input', marks)
+document.getElementById('math').addEventListener('input', marks)
+document.getElementById('english').addEventListener('input', marks)
+document.getElementById('physics').addEventListener('input', marks)
+document.getElementById('chemistry').addEventListener('input', marks)
+
+
+//العمر
+function age(){
+  var age = Number(document.getElementById('age').value);
+
+  if (age >= 60){
+    document.getElementById('totalage').innerHTML = 'العمر:  ' + age + '  Old'
+  }
+  else if (age >= 40){
+    document.getElementById('totalage').innerHTML = 'العمر:  ' + age + '  Mid'
+  }
+  else {
+    document.getElementById('totalage').innerHTML = 'العمر:  ' + age + '  Young'
+  }
+  document.getElementById('totalage').style.direction = 'rtl';
+}
+document.getElementById('age').addEventListener('input', age)
+</script>
+</body>
+</html>
