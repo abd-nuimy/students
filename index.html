@@ -5,28 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>نموذج البيانات</title>
 <style>
-    /* أنماط عامة */
+    /* أنماط أساسية */
+    :root {
+      --main-width: min(90%, 700px);
+      --input-width: min(200px, 100%);
+      --label-width: min(120px, 100%);
+      --subject-input-width: 60px;
+    }
+    
     body {
       font-family: Arial, sans-serif;
-      background: url(https://watermark.lovepik.com/photo/20211118/large/lovepik-street-in-the-middle-of-the-forest-picture_450085294.jpg);
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      padding: 20px;
+      background: url(https://watermark.lovepik.com/photo/20211118/large/lovepik-street-in-the-middle-of-the-forest-picture_450085294.jpg) center/cover no-repeat;
       color: #333;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* هذا السطر يضمن توسيط عمودي */
-      align-items: center; /* هذا السطر يضمن توسيط أفقي */
+      justify-content: center;
+      align-items: center;
       margin: 0;
+      padding: 20px;
     }
 
     /* صندوق النموذج */
     .form-box {
-      width: 50%;
+      width: var(--main-width);
       background-color: #f1e7e7a3;
-      padding: 20px;
+      padding: clamp(15px, 3vw, 25px);
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       margin-bottom: 30px;
@@ -35,33 +39,36 @@
 
     .form-box h2 {
       color: #443850;
-      margin-bottom: 20px;
+      margin-bottom: clamp(15px, 2vw, 25px);
+      font-size: clamp(1.5rem, 4vw, 1.8rem);
     }
 
     .form-box h3 {
       color: #60516f;
-      margin-bottom: 25px;
+      margin-bottom: clamp(15px, 2vw, 25px);
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
     }
 
-    /* حقول الإدخال */
+    /* حقول الإدخال الرئيسية */
     .input-group {
-      direction: ltr;
-      margin-bottom: 15px;
+      direction: rtl;
+      margin-bottom: clamp(10px, 2vw, 15px);
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .input-group label {
       background-color: rgba(136, 170, 153, 0.816);
       border-radius: 8px;
-      align-items: center;
-      padding: 8px 15px;
+      padding: clamp(6px, 1.5vw, 10px) clamp(10px, 2vw, 15px);
       border: 1.5px solid #5a5555;
-      height: px;
       text-align: center;
-      margin-left: 10px;
       font-weight: bold;
+      width: var(--label-width);
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
     }
 
     .input-group input {
@@ -71,22 +78,19 @@
       border-radius: 8px;
       height: 35px;
       padding: 0 10px;
-      width: 200px;
+      width: var(--input-width);
       text-align: right;
-      font-size: 16px;
+      font-size: clamp(0.9rem, 3vw, 1rem);
     }
 
-    /* حقول الإدخال */
+    /* مجموعة المواد الدراسية */
     .grades-container {
-      text-align: center;
-      align-items: center;
-      justify-content: center;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 60px;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: clamp(10px, 2vw, 20px);
       margin: 0 auto;
       direction: rtl;
+      width: 100%;
     }
 
     .subject-group {
@@ -94,15 +98,20 @@
       align-items: center;
       justify-content: space-between;
       background: rgba(255, 255, 255, 0.7);
-      padding: 5px 8px;
+      padding: clamp(5px, 1.5vw, 8px);
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .subject-group label {
       font-weight: bold;
-      margin-left: 15px;
+      margin-left: clamp(5px, 1.5vw, 15px);
+      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+      flex: 1;
+      min-width: 0;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .subject-group input {
@@ -111,31 +120,16 @@
       border-radius: 8px;
       height: 35px;
       text-align: center;
-      width: 50px;
-      text-align: center;
-      font-size: 16px;
-    }
-
-    .subject-group input:focus {
-      border: solid 2px #952525;
-      outline: none;
-    }
-
-    @media (max-width: 600px) {
-      .grades-container {
-        grid-template-columns: 1fr;
-      }
-    }
-    .input-group input:focus{
-      border: solid 2px #952525;
-      outline: none;
+      width: var(--subject-input-width);
+      font-size: clamp(0.9rem, 3vw, 1rem);
+      min-width: 50px;
     }
 
     /* بطاقة النتائج */
     .result-card {
       background-color: #8a9a; 
-      padding: 20px;
-      width: 40%;
+      padding: clamp(15px, 3vw, 20px);
+      width: var(--main-width);
       border-radius: 10px;
       color: white;
       text-align: center;
@@ -143,19 +137,39 @@
     }
 
     .result-card h2 {
-      font-size: 30px;
-      margin-bottom: 15px;
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      margin-bottom: clamp(10px, 2vw, 15px);
       font-weight: bolder;
     }
 
     .result-card p {
-      font-size: 18px;
+      font-size: clamp(1rem, 3vw, 1.1rem);
       font-weight: bold;
-      margin: 10px 0;
+      margin: clamp(5px, 1.5vw, 10px) 0;
       text-align: right;
     }
-    label{
+
+    /* تحسينات للتفاعل */
+    input:focus {
+      border: solid 2px #952525 !important;
+      outline: none;
+    }
+
+    label {
       direction: rtl;
+    }
+
+    /* تحسينات خاصة للشاشات الصغيرة جدًا */
+    @media (max-width: 400px) {
+      .subject-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .subject-group input {
+        width: 100%;
+        margin-top: 5px;
+      }
     }
 </style>
 </head>
@@ -166,22 +180,22 @@
     <h3>نموذج جمع البيانات</h3>
     
     <div class="input-group">
-      <input id="name1" placeholder="الاسم الأول" type="text">
       <label for="name1">الاسم الأول</label>
+      <input id="name1" placeholder="الاسم الأول" type="text">
     </div>
     
     <div class="input-group">
-      <input id="name2" placeholder="الاسم الثاني" type="text">
       <label for="name2">الاسم الثاني</label>
+      <input id="name2" placeholder="الاسم الثاني" type="text">
     </div>
     
     <div class="input-group">
-      <input id="numphone" placeholder="رقم الهاتف" type="tel">
       <label for="numphone">رقم الهاتف</label>
+      <input id="numphone" placeholder="رقم الهاتف" type="tel">
     </div>
     <div class="input-group">
-      <input id="age" placeholder="العمر " type="tel">
       <label for="age">العمـــــــــر</label>
+      <input id="age" placeholder="العمر " type="tel">
     </div>
 <div class="grades-container">
   <div class="subject-group">
