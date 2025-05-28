@@ -73,16 +73,15 @@
     }
 
     .input-group input {
-            font-family: "Noto Kufi Arabic", sans-serif;
-
+      font-family: "Noto Kufi Arabic", sans-serif;
       background: rgb(255, 255, 255);
       border: solid 1.5px #5a5555;
       box-shadow: 2px 2px 10px #c0afaf;
       border-radius: 8px;
       padding: 4px 2px;
-      width: var(--input-width);
+      width: 12px;
       text-align: right;
-      font-size: clamp(0.9rem, 3vw, 1rem);
+      font-size: px;
     }
 
     /* مجموعة المواد الدراسية */
@@ -99,7 +98,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.439);
       padding: clamp(5px, 1.5vw, 8px);
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -119,7 +118,7 @@
     .subject-group input {
             font-family: "Noto Kufi Arabic", sans-serif;
 
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.351);
       border: solid 1.5px #5a5555;
       border-radius: 8px;
       padding: 4px 2px;
@@ -165,15 +164,24 @@
 
     /* تحسينات خاصة للشاشات الصغيرة جدًا */
     @media (max-width: 400px) {
+      .grades-container{
+        width: 90%;
+        padding: 15px;
+        border-radius: 10px;
+        background: #60516f58;
+      }
       .subject-group {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: flex;
+        width: 240px;
       }
       
+      .subject-group label {
+        font-size: 10px;
+        width: 50%;
+      }
       .subject-group input {
         font-size: 10px;
-        width: 100%;
-        margin-top: 5px;
+        width: 50%;
       }
       .input-group label{
         font-size: 10px;
@@ -299,7 +307,7 @@ function marks(){
   else {
         textmarks = 'راسب 😒'
   }
-  document.getElementById('totalmarks').innerHTML = totalmarks +" - "+" "+      textmarks;
+  document.getElementById('totalmarks').innerHTML = "المعدل:    " + totalmarks +" - "+" "+      textmarks;
 }
 //عرض تلقائي
 document.getElementById('moslim').addEventListener('input', marks)
