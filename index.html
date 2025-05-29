@@ -16,7 +16,7 @@
     
     body {
       font-family: "Noto Kufi Arabic", sans-serif;
-      background: url(https://watermark.lovepik.com/photo/20211118/large/lovepik-street-in-the-middle-of-the-forest-picture_450085294.jpg) center/cover no-repeat;
+      background: url(photo.jpg        ) center/cover no-repeat;
       color: #333;
       min-height: 100vh;
       display: flex;
@@ -45,8 +45,8 @@
     }
 
     .form-box h3 {
+      margin-top: -30px;
       color: #60516f;
-      margin-bottom: clamp(15px, 2vw, 25px);
       font-size: clamp(1.1rem, 3vw, 1.3rem);
     }
 
@@ -80,10 +80,11 @@
       box-shadow: 2px 2px 10px #c0afaf;
       border-radius: 8px;
       padding: 4px 2px;
-      width: 12px;
+      width: 220px;
       text-align: right;
-      font-size: px;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
     }
+    
 
     /* مجموعة المواد الدراسية */
     .grades-container {
@@ -131,6 +132,7 @@
 
     /* بطاقة النتائج */
     .result-card {
+      margin-top: 30px;
       background-color: #8a9a; 
       padding: clamp(15px, 3vw, 20px);
       width: var(--main-width);
@@ -145,8 +147,6 @@
       font-size: clamp(1.4rem, 4vw, 1.8rem);
       margin-bottom: clamp(10px, 2vw, 15px);
       font-weight: bolder;
-      border-bottom: solid 2px rgb(255, 255, 255);
-      border-radius: 100px;
 
     }
 
@@ -193,11 +193,7 @@
         font-size: 10px;
         width: 80px;
       }
-      .input-group input{
-        font-size: 10px;
 
-        width: 160px;
-      }
       .result-card h2{
         font-size: 16px;
       }
@@ -205,13 +201,36 @@
         font-size: 12px;
       }
     }
+button {
+        font-family: "Noto Kufi Arabic", sans-serif;
+        background-color: #8a9a;
+        margin-top: 30px;
+        color: #000000;
+        border: 1.5px solid #00000086;
+        padding: 7px;
+        font-size: 16px;
+        border-radius: 8px;
+        width: 139px;
+        cursor: pointer;
+        font-weight: bolder;
+        text-transform: uppercase;
+        letter-spacing: 0px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
 </style>
 </head>
 <body>
 
   <div class="form-box">
     <h2>مرحباً بك</h2>
-    <h3>نموذج جمع البيانات</h3>
+    <h3> جمع بيانات الطلبة</h3>
     
     <div class="input-group">
       <label for="name1">الاسم الأول</label>
@@ -231,6 +250,8 @@
       <label for="age">العمـــــــــر</label>
       <input id="age" placeholder="العمر " type="tel">
     </div>
+    <details open>
+      <summary>الدرجات</summary>
 <div class="grades-container">
   <div class="subject-group">
     <label for="moslim">التربية الاسلامية:</label>
@@ -271,43 +292,40 @@
     <input id="chemistry" placeholder="الدرجة" type="number">
   </div>
 </div>
+</details>
+<button id="btnadd">اضافة</button>
   </div>
   
-  <div class="result-card">
-    <h2>📙 كارت البيانات 📘</h2>
-    <p id="totalname" >الاسم الكامل: </p>
-    <p id="totalnum"  >رقم الهاتـف: </p>
-    <p id="totalage"  >العمــــــــــر: </p>
-    <p id="totalmarks">المعـــــــدل : </p>
-    <p style="text-align: center; margin-top: 25px; text-shadow: #000000 2px 2px 10px;"> المبرمج🧑‍💻: عبدالخالق النعيمي  </p>
+  <div class="result-card" id="cards-container" style="display: none;">
+    <h2></h2>
+    <p id="totalname" ></p>
+    <p id="totalnum"  ></p>
+    <p id="totalage"  > </p>
+    <p id="totalmarks"></p>
+    <p style="text-align: center; margin-top: 25px; text-shadow: #000000 2px 2px 10px;"></p>
   </div>
 
 
 <script>
+  document.getElementById('btnadd').addEventListener('click',
   //النصوص
   function total(){
   var name1 = document.getElementById("name1").value;
   var name2 = document.getElementById("name2").value;
   var totalname1 = name1 + " " + name2;
   
-  document.getElementById('totalname').innerHTML = 'الاسم الكامل:  '+ totalname1;
   document.getElementById('totalname').style.direction = 'rtl';
-}
-document.getElementById('name1').addEventListener('input',total)
-document.getElementById('name2').addEventListener('input',total)
+
+
 // رقم الهاتف
-function numphone(){
   var numphone = document.getElementById('numphone').value;
-  document.getElementById('totalnum').innerHTML = 'رقم الهاتف:  '+numphone;
-}
-document.getElementById('numphone').addEventListener('input',numphone);
+
 
 
 
 
 
 //الدرجات
-function marks(){
   var mada1 = Number(document.getElementById('moslim').value);
   var mada2 = Number(document.getElementById('arabic').value);
   var mada3 = Number(document.getElementById('math').value);
@@ -324,9 +342,64 @@ function marks(){
   else {
         textmarks = 'راسب 😒'
   }
-  document.getElementById('totalmarks').innerHTML = "المعدل:    " + totalmarks +" - "+" "+      textmarks;
+
+
+
+
+//العمر
+  var age = Number(document.getElementById('age').value);
+    var textage = '';
+
+  if (age >= 60){
+    textage = 'Old'
+  }
+  else if (age >= 40){
+    textage = 'Mid'
+  }
+  else {
+    textage = 'Young'
+  }
+  document.getElementById('totalage').style.direction = 'rtl';
+  // إنشاء الكارت الجديد
+  var card = document.createElement("div");
+  card.className = "result-card";
+  card.innerHTML = `
+    <h2>📙 كارت البيانات 📘</h2>
+    <p style="direction: rtl;">الاسم الكامل: ${totalname1}</p>
+    <p style="direction: rtl;">رقم الهاتف: ${numphone}</p>
+    <p style="direction: rtl;">العمر:   ${age} - ${textage}</p>
+    <p style="direction: rtl;">المعدل: ${totalmarks.toFixed(2)} - ${textmarks}</p>
+    <p style="text-align: center; margin-top: 25px; text-shadow: #000000 2px 2px 10px;">المبرمج🧑‍💻: عبدالخالق النعيمي</p>
+  `;
+
+  // إلحاق الكارت بالحاوية
+  document.getElementById('cards-container').appendChild(card);
+  document.getElementById('cards-container').style.display = 'block';
+
+  //مسح الحقول بعد الاضافة
+  document.getElementById('name1').value = "";
+  document.getElementById('name2').value = "";
+  document.getElementById('age').value = "";
+  document.getElementById('numphone').value = "";
+  document.getElementById('moslim').value = "";
+  document.getElementById('arabic').value = "";
+  document.getElementById('math').value = "";
+  document.getElementById('english').value = "";
+  document.getElementById('geoghraphy').value = "";
+  document.getElementById('biology').value = "";
+  document.getElementById('physics').value = "";
+  document.getElementById('chemistry').value = "";
+
 }
-//عرض تلقائي
+
+);
+//النصوصو
+document.getElementById('name1').addEventListener('input',total)
+document.getElementById('name2').addEventListener('input',total)
+//رقم الهاتف
+document.getElementById('numphone').addEventListener('input',numphone);
+
+//الدرجات
 document.getElementById('moslim').addEventListener('input', marks)
 document.getElementById('arabic').addEventListener('input', marks)
 document.getElementById('english').addEventListener('input', marks)
@@ -336,22 +409,7 @@ document.getElementById('geoghraphy').addEventListener('input', marks)
 document.getElementById('physics').addEventListener('input', marks)
 document.getElementById('chemistry').addEventListener('input', marks)
 
-
 //العمر
-function age(){
-  var age = Number(document.getElementById('age').value);
-
-  if (age >= 60){
-    document.getElementById('totalage').innerHTML = 'العمر:  ' + age + '  Old'
-  }
-  else if (age >= 40){
-    document.getElementById('totalage').innerHTML = 'العمر:  ' + age + '  Mid'
-  }
-  else {
-    document.getElementById('totalage').innerHTML = 'العمر:  ' + age + '  Young'
-  }
-  document.getElementById('totalage').style.direction = 'rtl';
-}
 document.getElementById('age').addEventListener('input', age)
 </script>
 </body>
